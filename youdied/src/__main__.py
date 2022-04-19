@@ -1,6 +1,4 @@
-from youdied.src.capture_and_detect import run_a_test
+from cli import run_from_cli
 
 if __name__ == "__main__":
-    run_a_test()
-else:
-    print('not running as a main module')
+    run_from_cli()

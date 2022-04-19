@@ -2,7 +2,7 @@
 #  https://kidadl.com/quotes/inspiring-proverbs-quotes-the-wisest-words-to-live-by
 #  https://www.shopify.com/blog/motivational-quotes
 
-proverbs = [
+messages = [
                "He who asks is a fool for five minutes, but he who does not ask remains a fool forever.",
                "Give a man a fish and you feed him for a day. Teach a man to fish and you feed him for a lifetime.",
                "Do not desire to hurt others in the depths of your heart.",

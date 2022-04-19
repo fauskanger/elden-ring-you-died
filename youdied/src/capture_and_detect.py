@@ -1,13 +1,13 @@
-import numpy as np
-from PIL import Image
-import tensorflow as tf
-
+import sys
 import time
-
 from pathlib import Path
-import d3dshot
 
-from inspiration_message import proverbs
+import numpy as np
+import tensorflow as tf
+import d3dshot
+from PIL import Image
+
+from storage import process_death, add_session
 
 
 def capture_anything():
@@ -22,6 +22,7 @@ models_file_path = Path().resolve().parent / 'models'
 model_file = models_file_path / 'theModel'
 
 model = tf.keras.models.load_model(model_file)
+print('Model loaded. Ready to start screen capture\n')
 
 # Need to preprocess images the same way as we did during training
 # resizing them first
@@ -31,7 +32,7 @@ frame_size = tuple((frame_size_ratio * np.array([1920, 1080])).astype(int))
 # define cropped region shape (same as training input size)
 # NOTE numpy format: y, x, n_channels  -- i.e. height, width, 3 (from rgb)
 cropped_shape = 54, 125, 3
-print(f'cropped images should have shape {cropped_shape}')
+# print(f'cropped images should have shape {cropped_shape}')
 
 
 def resize_frame(frame):
@@ -95,9 +96,6 @@ def classify_capture(img_array, *args, **kwargs):
     return classify_image_array(img_array, *args, **kwargs)
 
 
-def on_death(score):
-    print(f'You died (confidence: {score:>3.2f}) but read this: <3\n {np.random.choice(proverbs)}')
-
 # Need to capture frames from screen to run inference on model so we can motivate player on death
 #
 # To install d3dshot, use fork in this way:
@@ -120,4 +118,27 @@ def run_a_test():
         img_array = d.screenshot()
         class_name, score = classify_capture(img_array, print_image=False)
         if class_name == 'death':
-            on_death(100 * score)
+            print(f'You died (confidence: {(score*100):>3.2f}) but you can do better!')
+
+
+def run_forever(character):
+    # Will capture a screenshot, preprocess and run inference every second until stopped.
+    # After death, a five seconds cool-down is used to prevent counting same death more than once.
+    add_session(character)
+    d = d3dshot.create(capture_output="numpy")
+    cooldown_seconds = 0
+    try:
+        while "program is running":
+            time.sleep(1)
+            cooldown_seconds = max(0, cooldown_seconds-1)
+            if cooldown_seconds > 0:
+                continue
+            img_array = d.screenshot()
+            class_name, score = classify_capture(img_array)
+            if class_name == 'death':
+                cooldown_seconds = 5
+                process_death(character, score)
+    except KeyboardInterrupt:
+        print('\nExiting script...')
+        sys.exit()
+

@@ -24,4 +24,14 @@ setup(
         "Topic :: Multimedia :: Graphics :: Capture :: Screen Capture",
         "Topic :: Scientific/Engineering :: Image Recognition"
     ],
+    entry_points={
+        'console_scripts': ['youdied=cli:run_from_cli']
+    },
+    install_requires=[
+        'numpy',
+        'pandas',
+        'tensorflow>=2',
+        'pillow>=9',
+        'D3DShot @ git+https://github.com/fauskanger/D3DShot#egg=D3DShot'
+    ]
 )
