@@ -8,21 +8,36 @@ Requires Windows and Python 3.7+
 
 ### If you know what Python and pip is:
 
-Install with pip: `pip install eldenringdeath`
+Install with pip: `pip install youdied`
 
-### If you don't know what `pip` is:
+### If you don't know what Python is:
 
 Make sure you have Python installed on you machine.
 
-If you don't, install using __one of these__ approaches:
+Go to your terminal and confirm that python is installed 
+by typing `python -V` and press Enter. 
+It should say something like `Python 3.10.4` or something similar. 
+It must be version 3.7.0 or higher.
+
+If you don't, there are many ways to install Python.
+E.g. using __one of these__ approaches:
 
  - install windows app https://www.microsoft.com/en-us/p/python-310/9pjpw5ldxlz5?activetab=pivot:overviewtab (very easy)
  - download and install from https://www.python.org/downloads/ (default)
  - install miniconda from 
    https://docs.conda.io/en/latest/miniconda.html (potentially more advanced)
 
-After you have installed Python, open you terminal (or anaconda prompt when using miniconda)
-and confirm that python is installed by typing `python -V` and press Enter. It should 
+After you have installed Python, open you terminal (or anaconda prompt when using miniconda). 
+Now, you should verify that you have Python installed, 
+which also lets you use the `pip`-command to install new packages.
+Go back to the step above and install using the `pip`-command.
+
+__NOTE__: Python is capable of running any arbitrary code on your machine. 
+If you have no idea what strangers' code does, then you should not run it on your 
+machine. 
+Be skeptical, and critical.
+You could ask someone you trust to look over this code first, if you're unable to verify yourself.
+The code is freely available in the repository, for scrutiny and education.
   
 ## How to use `youdied`
 After installed, you can run the `youdied` command from terminal 
