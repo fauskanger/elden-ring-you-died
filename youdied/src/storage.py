@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 
-from exceptions import CannotLoadCharacterError
-from inspiration_message import messages
+from src.exceptions import CannotLoadCharacterError
+from src.inspiration_message import messages
 
 # Define and create a folder in the user's folder
 storage_folder = Path().home() / '.youdied'

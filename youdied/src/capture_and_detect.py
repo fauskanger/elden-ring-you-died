@@ -7,7 +7,7 @@ import tensorflow as tf
 import d3dshot
 from PIL import Image
 
-from storage import process_death, add_session
+from src.storage import process_death, add_session
 
 
 def capture_anything():

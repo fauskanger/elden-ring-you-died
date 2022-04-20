@@ -1,6 +1,6 @@
 import argparse
 
-from storage import get_previous_character, initialize_death_file, print_all_characters, \
+from src.storage import get_previous_character, initialize_death_file, print_all_characters, \
     print_previous_character
 
 
