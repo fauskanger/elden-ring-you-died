@@ -5,8 +5,8 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='youdied',
-    version='0.0.1',
-    url='',
+    version='0.1.1',
+    url='https://github.com/fauskanger/elden-ring-you-died/tree/main/youdied',
     license='MIT',
     author='Thomas F',
     author_email='',
@@ -15,9 +15,9 @@ setup(
     long_description_content_type="text/markdown",
     package_dir={"": "src"},
     packages=find_packages(where="src"),
-    python_requires=">=3.6",
+    python_requires=">=3.7",
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Topic :: Games/Entertainment",
@@ -31,7 +31,6 @@ setup(
         'numpy',
         'pandas',
         'tensorflow>=2',
-        'pillow>=9',
-        'D3DShot @ git+https://github.com/fauskanger/D3DShot#egg=D3DShot'
+        'pillow>=9'
     ]
 )
