@@ -36,8 +36,8 @@ __NOTE__: Python is capable of running any arbitrary code on your machine.
 If you have no idea what strangers' code does, then you should not run it on your 
 machine. 
 Be skeptical, and critical.
-You could ask someone you trust to look over this code first, if you're unable to verify yourself.
-The code is freely available in the repository, for scrutiny and education.
+You could ask someone you trust to look over this code first if you're unable to verify yourself.
+The code is freely available in the repository for scrutiny, inspiration and education.
   
 ## How to use `youdied`
 After installed, you can run the `youdied` command from terminal 
@@ -60,7 +60,7 @@ Print name of last character: `youdied -p` or `youdied --previous`
 
 Death count file: *&lt;your user folder&gt; / .youdied / deathCounts / &lt;character name&gt;.txt*
 
-Show stats: `youdied -l` or `youdied --list` will output
+Show stats: `youdied -l` or `youdied --list` will output something like
 
 ```
         Started last            Character          Death count

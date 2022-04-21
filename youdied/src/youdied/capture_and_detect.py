@@ -1,13 +1,17 @@
+# import pkg_resources
 import sys
 import time
 from pathlib import Path
 
 import numpy as np
 import tensorflow as tf
-import d3dshot
 from PIL import Image
 
-from src.storage import process_death, add_session
+import d3dshot
+from .storage import process_death, add_session
+
+
+# MODELS_PATH = pkg_resources.resource_filename(__name__, 'models')
 
 
 def capture_anything():
@@ -18,8 +22,12 @@ def capture_anything():
 class_names = ['death', 'non-death']
 
 # Load trained model
-models_file_path = Path().resolve().parent / 'models'
-model_file = models_file_path / 'theModel'
+local_models_file_path = Path(__file__).resolve().parent / 'models' / 'theModel'
+models_file_path = Path(sys.prefix) / 'models' / 'themodel'
+if not models_file_path.exists():
+    print('Using local TF-model, not from distribution installation')
+    models_file_path = local_models_file_path
+model_file = models_file_path
 
 model = tf.keras.models.load_model(model_file)
 print('Model loaded. Ready to start screen capture\n')
@@ -126,6 +134,7 @@ def run_forever(character):
     # After death, a five seconds cool-down is used to prevent counting same death more than once.
     add_session(character)
     d = d3dshot.create(capture_output="numpy")
+    print(f'Capturing screen: {d.display}')
     cooldown_seconds = 0
     try:
         while "program is running":

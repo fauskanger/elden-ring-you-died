@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 
-from src.exceptions import CannotLoadCharacterError
-from src.inspiration_message import messages
+from .exceptions import CannotLoadCharacterError
+from .inspiration_message import messages
 
 # Define and create a folder in the user's folder
 storage_folder = Path().home() / '.youdied'
@@ -83,6 +83,7 @@ def add_session(character):
     new_index = session_df.shape[0]
     session_df.loc[new_index] = (character, pd.Timestamp('now'))
     session_df.to_csv(session_file, encoding='utf8')
+    print(f'Look at your registered death count in {get_death_count_file(character).absolute()} ')
 
 
 def create_inspiration_message():

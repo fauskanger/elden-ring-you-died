@@ -1,6 +1,6 @@
 import argparse
 
-from src.storage import get_previous_character, initialize_death_file, print_all_characters, \
+from .storage import get_previous_character, initialize_death_file, print_all_characters, \
     print_previous_character
 
 
@@ -8,7 +8,7 @@ def make_argparser():
     """
     Setup argparse arguments.
     """
-    parser = argparse.ArgumentParser(prog='youdied',
+    parser = argparse.ArgumentParser(prog='src',
                                      description="A motivational Elden Ring death counter.\n\n"
                                                  "Uses screen capture to detect deaths.\n"
                                                  "Will output motivational quotes and proverbs on detection.\n",
@@ -31,11 +31,11 @@ def make_argparser():
 
 
 def start_detecting(character):
-    from capture_and_detect import run_forever
+    from .capture_and_detect import run_forever
     run_forever(character)
 
 
-def run_from_cli():
+def main():
     parser = make_argparser()
     args = parser.parse_args()
     if args.version:
